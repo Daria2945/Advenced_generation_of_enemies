@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 493935378}
   - component: {fileID: 493935377}
   m_Layer: 0
-  m_Name: Spawner 2
+  m_Name: Container 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 824248493}
   - component: {fileID: 824248492}
   m_Layer: 0
-  m_Name: Spawner 1
+  m_Name: Container 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -814,7 +814,7 @@ GameObject:
   - component: {fileID: 1233812912}
   - component: {fileID: 1233812911}
   m_Layer: 0
-  m_Name: SnawnManager
+  m_Name: Snawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -832,10 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735283ec360423c43a66903730a6e18d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawners:
-  - {fileID: 824248492}
-  - {fileID: 493935377}
-  - {fileID: 1993277005}
+  _containers: []
   _delay: 1
 --- !u!4 &1233812912
 Transform:
@@ -1205,7 +1202,7 @@ GameObject:
   - component: {fileID: 1993277006}
   - component: {fileID: 1993277005}
   m_Layer: 0
-  m_Name: Spawner 3
+  m_Name: Container 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
