@@ -1,55 +1,30 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Target _target;
-    [SerializeField] private Enemy _enemyPrefab;
-    [SerializeField] private Transform _spawnPoint;
-    [SerializeField] private int _poolCapacity = 5;
-    [SerializeField] private int _poolMaxSize = 10;
+    [SerializeField] private Container[] _containers;
+    [SerializeField] private float _delay = 2f;
 
-    private ObjectPool<Enemy> _pool;
-
-    private void Awake()
+    private void Start()
     {
-        CreatePool();
+        StartCoroutine(SpawnEnemies());
     }
 
-    public void SpawnEnemy()
+    private void Spawn()
     {
-        GetEnemy();
+        _containers[Random.Range(0, _containers.Length)].GetEnemy();
     }
 
-    private void CreatePool()
+    private IEnumerator SpawnEnemies()
     {
-        _pool = new ObjectPool<Enemy>(
-            createFunc: () => Instantiate(_enemyPrefab),
-            actionOnGet: (enemy) => ConfigureEnemy(enemy),
-            actionOnRelease: (enemy) => enemy.gameObject.SetActive(false),
-            actionOnDestroy: (enemy) => Destroy(enemy.gameObject),
-            collectionCheck: true,
-            defaultCapacity: _poolCapacity,
-            maxSize: _poolMaxSize
-            );
-    }
+        var wait = new WaitForSecondsRealtime(_delay);
 
-    private void ConfigureEnemy(Enemy enemy)
-    {
-        enemy.transform.position = _spawnPoint.position;
-        enemy.gameObject.SetActive(true);
-    }
+        while (true)
+        {
+            Spawn();
 
-    private void GetEnemy()
-    {
-        Enemy enemy = _pool.Get();
-        enemy.SetTarget(_target);
-        enemy.TargetApproached += ReturnToPool;
-    }
-
-    private void ReturnToPool(Enemy enemy)
-    {
-        _pool.Release(enemy);
-        enemy.TargetApproached -= ReturnToPool;
+            yield return wait;
+        }
     }
 }
