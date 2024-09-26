@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    private float _speed;
+    [SerializeField] private float _speed;
+
     private Target _target;
 
     private void Update()
@@ -14,10 +15,5 @@ public class EnemyMover : MonoBehaviour
     public void SetTarget(Target target)
     {
         _target = target;
-    }
-
-    public void SetSpeed(float speed)
-    {
-        _speed = speed;
     }
 }

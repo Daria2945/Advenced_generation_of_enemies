@@ -4,8 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyMover), typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-
     private EnemyMover _mover;
     private Target _target;
 
@@ -14,7 +12,6 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         _mover = GetComponent<EnemyMover>();
-        _mover.SetSpeed(_speed);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Container : MonoBehaviour
+public class SpawnPoint : MonoBehaviour
 {
     [SerializeField] private Target _target;
     [SerializeField] private Enemy _enemyPrefab;
@@ -16,7 +16,7 @@ public class Container : MonoBehaviour
         CreatePool();
     }
 
-    public void GetEnemy()
+    public void SpawnEnemy()
     {
         Enemy enemy = _pool.Get();
         enemy.SetTarget(_target);

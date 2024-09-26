@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Container[] _containers;
+    [SerializeField] private SpawnPoint[] _spawnPoints;
     [SerializeField] private float _delay = 2f;
 
     private void Start()
@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        _containers[Random.Range(0, _containers.Length)].GetEnemy();
+        _spawnPoints[Random.Range(0, _spawnPoints.Length)].SpawnEnemy();
     }
 
     private IEnumerator SpawnEnemies()
